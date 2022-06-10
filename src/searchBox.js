@@ -98,7 +98,9 @@ const _searchBox = (props, ref) => {
         id="search-list"
         style={{
           border: "1px solid black",
-          marginTop: 8,
+          marginTop: -8,
+          marginLeft: 8,
+          marginRight: 8,
           maxHeight: 300,
           width: 300,
           overflow: "auto",

@@ -279,20 +279,23 @@ function App() {
 
   return (
     <div style={{ marginTop: 16, marginLeft: 16 }}>
-      <div style={{ position: "relative", backgroundColor: "#fff" }}>
+      <div style={{ position: "relative", backgroundColor: "#fff", display: 'flex' }}>
+        <div style={{padding: 8, backgroundColor: '#dedede', borderRadius: 8, alignSelf: 'flex-start'}}>
         <textarea
           ref={textAreaRef}
           rows={1}
           style={{
             resize: "none",
             width: 200,
-            backgroundColor: "white",
+            backgroundColor: "transparent",
             fontSize: 14,
             padding: 2,
-            border: "1px solid black",
+            border: "none",
+            borderRadius: 0,
             fontFamily: "sans-serif",
             color: "black",
             caretColor: "black",
+            outline: 'none',
           }}
           onClick={onClick}
           value={value.valueOf()}
@@ -307,23 +310,25 @@ function App() {
             position: "absolute",
             fontFamily: "sans-serif",
             fontSize: 14,
-            top: 0,
+            top: 8,
             width: 200,
             height,
-            border: "1px solid red",
+            border: "none",
             backgroundColor: "transparent",
             zIndex: 1,
             pointerEvents: "none",
             padding: 2,
             margin: 0,
+            borderRadius: 0,
             wordWrap: "break-word",
             whiteSpace: "pre-wrap",
           }}
         >
           {renderByMention()}
         </p>
+        </div>
+        <SearchBox ref={searchBoxRef} onMention={onMention} />
       </div>
-      <SearchBox ref={searchBoxRef} onMention={onMention} />
     </div>
   );
 }
