@@ -1,6 +1,7 @@
 import "./App.css";
 import { Fragment, useEffect, useRef, useState } from "react";
 import SearchBox from "./searchBox";
+import autosize from "autosize";
 
 const getNearestAtData = (str, pos) => {
   let curr = pos;
@@ -84,6 +85,8 @@ function App() {
 
   const onKeyDown = (e) => {
     const { selectionStart, selectionEnd } = e.target;
+    // autosize(e.target);
+    // setHeight(e.target.style.height);
     setPrevSelection({
       selectionStart,
       selectionEnd,
@@ -204,9 +207,10 @@ function App() {
   };
 
   const onChange = (e) => {
-    e.target.style.height = "auto";
-    e.target.style.height = `${e.target.scrollHeight}px`;
-    setHeight(Math.max(e.target.scrollHeight, 40));
+    // e.target.style.height = "auto";
+    // e.target.style.height = `${e.target.scrollHeight}px`;
+    autosize(e.target);
+    setHeight(e.target.style.height);
   };
 
   const renderByMention = () => {
@@ -285,10 +289,9 @@ function App() {
             backgroundColor: "white",
             fontSize: 14,
             padding: 2,
-            minHeight: 40,
             border: "1px solid black",
             fontFamily: "sans-serif",
-            color: "transparent",
+            color: "black",
             caretColor: "black",
           }}
           onClick={onClick}
@@ -306,9 +309,8 @@ function App() {
             fontSize: 14,
             top: 0,
             width: 200,
-            minHeight: 40,
             height,
-            border: "1px solid transparent",
+            border: "1px solid red",
             backgroundColor: "transparent",
             zIndex: 1,
             pointerEvents: "none",
